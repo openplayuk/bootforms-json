@@ -50,11 +50,11 @@ class BootFormsServiceProvider extends ServiceProvider
             $formBuilder = new FormBuilder;
             $formBuilder->setErrorStore($app['adamwathan.form.errorstore']);
             $formBuilder->setOldInputProvider($app['adamwathan.form.oldinput']);
-             if(app()->version()>=5.4){
-                         $formBuilder->setToken($app['session.store']->token());
+            if(app()->version()>=5.4|| app()->version() >= 10.0){
+                $formBuilder->setToken($app['session.store']->token());
 
             } else {
-                        $formBuilder->setToken($app['session.store']->getToken());
+                $formBuilder->setToken($app['session.store']->getToken());
 
             }
 
